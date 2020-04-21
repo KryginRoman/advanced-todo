@@ -1,0 +1,51 @@
+.navigation-item {
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 11px 13px;
+  margin-bottom: 5px;
+  position: relative;
+  transition: all .4s ease-in-out;
+  &_active {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  &:hover {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  &__icon {
+    margin-right: 10px;
+    &-default {
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      &[data-color="pink"] {
+        background: #FFBBCC;
+      }
+      &[data-color="green"] {
+        background: #42B883;
+      }
+      &[data-color="light-green"] {
+        background: #B6E6BD;
+      }
+      &[data-color="light-blue"] {
+        background: #64C4ED;
+      }
+      &[data-color="grey"] {
+        background: #C9D1D3;
+      }
+    }
+  }
+  &__text {
+    display: inline-block;
+  }
+  &__remove {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    right: 13px;
+  }
+}

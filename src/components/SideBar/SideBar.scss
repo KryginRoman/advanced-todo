@@ -1,0 +1,11 @@
+.sidebar {
+  background: #E5E5E5;
+  padding: 55px 20px;
+  height: 100%;
+  &-navigation {
+    margin-bottom: 50px;
+    &_main {
+      margin-bottom: 40px;
+    }
+  }
+}
