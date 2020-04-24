@@ -1,0 +1,30 @@
+.todo-list-item {
+  padding-left: 35px;
+  padding-right: 20px;
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  &__checkbox {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  &__text {
+    display: inline-block;
+  }
+  &__remove {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    & > svg > path {
+      transition: all .4s ease-in-out;
+    }
+  }
+  &:hover > .todo-list-item__remove > svg > path {
+    fill: #E3E3E3;
+  }
+}

@@ -1,0 +1,39 @@
+.checkbox {
+  display: block;
+  position: relative;
+  &__input {
+    display: none;
+    &:checked + .checkbox__custom-box {
+      background: #4DD599;
+      border: 2px solid #4DD599;
+      & > svg > path {
+        stroke: #FFF;
+      }
+    }
+  }
+  &__custom-box {
+    border: 2px solid #E8E8E8;
+    border-radius: 50%;
+    cursor: pointer; 
+    position: relative;  
+    width: 20px;
+    height: 20px;
+    transition: all .4s ease-in-out;
+    &:hover {
+      background: #F2F2F2;
+      border: 2px solid #F2F2F2;
+      & > svg > path {
+        stroke: #B3B3B3;
+      }
+    }
+    & > svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      & > path {
+        transition: all .4s ease-in-out;
+      }
+    }
+  }
+}

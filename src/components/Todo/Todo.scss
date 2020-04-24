@@ -1,0 +1,35 @@
+.todo {
+  flex-grow: 1;
+  padding: 55px;
+  &-title {
+    border-bottom: 1px solid #F2F2F2;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    & > span {
+      display: inline-block;
+      padding-right: 15px;
+    }
+    &__edit {
+      cursor: pointer;
+      & > svg > path {
+        transition: all .4s ease-in-out;
+      }
+    }
+    &:hover {
+      & > .todo-title__edit > svg > path {
+        fill: #DFDFDF;
+      }
+    }
+  }
+  &__list {
+    margin-bottom: 20px;
+  }
+}

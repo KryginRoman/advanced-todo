@@ -11,9 +11,16 @@
     background: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   }
+  & > .navigation-item__remove > svg > path {
+    opacity: 0;
+    transition: all .4s ease-in-out;
+  }
   &:hover {
     background: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    & .navigation-item__remove > svg > path {
+      opacity: 1;
+    }
   }
   &__icon {
     margin-right: 10px;
@@ -27,14 +34,23 @@
       &[data-color="green"] {
         background: #42B883;
       }
-      &[data-color="light-green"] {
+      &[data-color="lime"] {
         background: #B6E6BD;
       }
-      &[data-color="light-blue"] {
+      &[data-color="blue"] {
         background: #64C4ED;
       }
       &[data-color="grey"] {
         background: #C9D1D3;
+      }
+      &[data-color="purple"] {
+        background: #C355F5;
+      }
+      &[data-color="black"] {
+        background: #09011A;
+      }
+      &[data-color="red"] {
+        background: #FF6464;
       }
     }
   }
@@ -42,9 +58,10 @@
     display: inline-block;
   }
   &__remove {
-    position: absolute;
-    width: 10px;
-    height: 10px;
+    position: relative;
+    right: 0;
+    // width: 10px;
+    // height: 10px;
     top: 50%;
     right: 13px;
   }

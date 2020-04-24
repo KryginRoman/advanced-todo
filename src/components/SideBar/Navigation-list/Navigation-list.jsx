@@ -8,11 +8,11 @@ export default ({ navigationItems }) => {
   return (
     <ul className="navigation">
       {
-        navigationItems.map(({ icon, text, removable, color, id }) => {
+        navigationItems.map(({ icon, name, removable, color, id }) => {
           return <NavItem
                     icon={icon}
-                    text={text}
-                    active={true}
+                    name={name}
+                    active={false}
                     removable={removable}
                     defaultIconColor={color}
                     key={id}
