@@ -1,0 +1,41 @@
+.color-list {
+  display: flex;
+  &__item {
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transition: all .4s ease-in-out;
+    &_active {
+      border-color: #525252;
+    }
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+    &[data-color="grey"] {
+      background: #C9D1D3;
+    }
+    &[data-color="green"] {
+      background: #42B883;
+    }
+    &[data-color="blue"] {
+      background: #64C4ED;
+    }
+    &[data-color="pink"] {
+      background: #FFBBCC;
+    }
+    &[data-color="lime"] {
+      background: #B6E6BD;
+    }
+    &[data-color="purple"] {
+      background: #C355F5;
+    }
+    &[data-color="black"] {
+      background: #110133;
+    }
+    &[data-color="red"] {
+      background: #FF6464;
+    }
+  }
+}

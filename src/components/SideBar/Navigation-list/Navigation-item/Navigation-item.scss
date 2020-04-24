@@ -58,11 +58,11 @@
     display: inline-block;
   }
   &__remove {
-    position: relative;
-    right: 0;
-    // width: 10px;
-    // height: 10px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
     top: 50%;
     right: 13px;
+    transform: translateY(-50%);
   }
 }

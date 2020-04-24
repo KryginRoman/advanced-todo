@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Navigation-item.scss';
 
-export default ({ icon, name, onClick, active, removable, defaultIconColor }) => {
+export default ({ icon, name, onClick, onRemove, active, removable, defaultIconColor }) => {
   const classList = ["navigation-item"];
 
   if (active) classList.push("navigation-item_active");
@@ -14,7 +14,7 @@ export default ({ icon, name, onClick, active, removable, defaultIconColor }) =>
       </div>
       <span className="navigation-item__text">{name}</span>
       {removable 
-      ? <div className="navigation-item__remove">
+      ? <div className="navigation-item__remove" onClick={onRemove}>
           <svg
             width="11"
             height="11"
