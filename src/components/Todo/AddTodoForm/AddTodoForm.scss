@@ -1,0 +1,14 @@
+.add-todo {
+  &__form {
+    &__field {
+      margin-bottom: 16px;
+    }
+    &__buttons {
+      display: flex;
+      width: 245px;
+    }
+    &__confirm {
+      margin-right: 10px;
+    }
+  }
+}

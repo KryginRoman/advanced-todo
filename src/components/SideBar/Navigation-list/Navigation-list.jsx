@@ -4,20 +4,20 @@ import NavItem from './Navigation-item/Navigation-item';
 
 import './Navigation-list.scss';
 
-export default ({ navigationItems, activeListId, onRemove, onClick, onSetActive }) => {
+export default ({ navigationItems, activeListItem, onClickItem, onRemove }) => {
   return (
-    <ul className="navigation" onClick={onClick}>
+    <ul className="navigation">
       {
-        navigationItems.map(({ icon, name, removable, color, id }) => {
+        navigationItems.map(({ icon, name, active, removable, color, id }) => {
           return <NavItem
                     icon={icon}
                     name={name}
-                    active={activeListId === id}
+                    active={active || (activeListItem === id)}
                     removable={removable}
                     defaultIconColor={color}
                     key={id}
-                    onRemove={() => onRemove(id)}
-                    onClick={() => onSetActive(id)}
+                    onClick={onClickItem && (() => onClickItem(id))}
+                    onRemove={onRemove && (() => onRemove(id))}
                  />
         })
       }

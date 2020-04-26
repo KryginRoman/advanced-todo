@@ -36,7 +36,7 @@
         "id": 1,
         "listId": 2,
         "text": "Изучить JavaScript",
-        "completed": true
+        "completed": false
       },
       {
         "id": 2,
@@ -48,7 +48,7 @@
         "id": 3,
         "listId": 2,
         "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-        "completed": true
+        "completed": false
       },
       {
         "id": 4,
