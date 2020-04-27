@@ -2,17 +2,13 @@
   background: #E5E5E5;
   padding: 55px 20px;
   position: relative;
-  height: 100%;
+  top: 0;
+  bottom: 0;
+  width: 200px;
   &-navigation {
     margin-bottom: 50px;
     &_main {
       margin-bottom: 40px;
     }
-  }
-  &__add-button {
-    margin-bottom: 13px;
-  }
-  &__add-panel {
-    position: absolute;
   }
 }

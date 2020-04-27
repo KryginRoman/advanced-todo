@@ -9,9 +9,9 @@ import db from './db/db.json';
 import './App.scss';
 
 export default () => {
-  console.log(1)
   const history = useHistory();
   const [lists, setLists] = useState(db.lists);
+  const [tasks, setTasks] = useState(db.tasks);
   const [activeListItem, setActiveListItem] = useState(null);
 
   useEffect(()=> {
@@ -37,14 +37,48 @@ export default () => {
     const todo = {
       listId,
       text,
-      completed: false
+      completed: false,
+      id: tasks.length + 1
     }
+    const newList = [...tasks, todo]
+
+    setTasks(newList)
+  }
+  const removeTodoItem = id => {
+    const newList = tasks.filter(task => task.id !== id)
+    setTasks(newList);
+  }
+  const toggleCompleteTodoItem = id => {
+    const newList = tasks.map(task => {
+      if (task.id === id) {
+        return {
+          ...task,
+          completed: !task.completed
+        }
+      }
+
+      return task
+    })
+    setTasks(newList);
+  }
+  const editListTitle = (id, newTitle) => {
+    const newList = lists.map(list => {
+      if (list.id === id) {
+        return {
+          ...list,
+          name: newTitle
+        }
+      }
+      return list
+    })
+    setLists(newList);
   }
 
   const lists2 = lists.map(list => {
     return {
       ...list,
-      tasks: db.tasks.filter(task => task.listId === list.id)
+      tasks: tasks.filter(task => task.listId === list.id),
+      colorName: db.colors.find(color => color.id === list.colorId).name
     }
   })
 
@@ -61,13 +95,24 @@ export default () => {
         <Route exact path="/">
           {
             lists2.map(list => {
-              return <Todo list={list} key={list.id} />
+              return <Todo 
+                      list={list} 
+                      key={list.id}
+                      onAdd={addTodoItem}
+                      onRemove={removeTodoItem}
+                      onComplete={toggleCompleteTodoItem}
+                      onEdit={editListTitle}
+                     />
             })
           }
         </Route>
         <Route path="/list/:id">
           <Todo
             list={lists2.find(list => list.id === Number(activeListItem))}
+            onAdd={addTodoItem}
+            onRemove={removeTodoItem}
+            onComplete={toggleCompleteTodoItem}
+            onEdit={editListTitle}
           />
         </Route>
       </div>

@@ -1,0 +1,60 @@
+.todo-title {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 39px;
+  & > a {
+    padding-right: 15px;
+  }
+  &__edit {
+    cursor: pointer;
+    &-field {
+      width: 370px;
+      & > input {
+        margin-bottom: 15px;
+      }
+      &__buttons {
+        display: flex;
+        & > button:first-child {
+          margin-right: 15px;
+        }
+      }
+    }
+    & > svg > path {
+      fill: #DFDFDF;
+      transition: all .4s ease-in-out;
+      opacity: .1;
+    }
+  }
+  &:hover > .todo-title__edit > svg > path {
+    opacity: 1;
+    fill: darken($color: #DFDFDF, $amount: 5);
+  }
+  &[data-color="pink"] {
+    color: #FFBBCC;
+  }
+  &[data-color="green"] {
+    color: #42B883;
+  }
+  &[data-color="lime"] {
+    color: #B6E6BD;
+  }
+  &[data-color="blue"] {
+    color: #64C4ED;
+  }
+  &[data-color="grey"] {
+    color: #C9D1D3;
+  }
+  &[data-color="purple"] {
+    color: #C355F5;
+  }
+  &[data-color="black"] {
+    color: #09011A;
+  }
+  &[data-color="red"] {
+    color: #FF6464;
+  }
+}

@@ -4,17 +4,20 @@ import Checkbox from '../../../Checkbox/Checkbox';
 
 import './Todo-item.scss';
 
-export default ({ text, completed, onChange }) => {
+export default ({ text, completed, onRemove, onComplete }) => {
   return (
     <li className="todo-list-item">
       <div className="todo-list-item__checkbox">
         <Checkbox
           checked={completed}
-          onChange={onChange}
+          onChange={onComplete}
         />
       </div>
       <span className="todo-list-item__text">{text}</span>
-      <div className="todo-list-item__remove">
+      <div
+        className="todo-list-item__remove"
+        onClick={onRemove}
+      >
         <svg 
           width="11" 
           height="11" 

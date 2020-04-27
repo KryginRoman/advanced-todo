@@ -1,9 +1,6 @@
 .add-panel {
-  background: #FFFFFF;
-  padding: 17px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
   position: relative;
+  margin-bottom: 140px;
   &__field {
     margin-bottom: 13px;
   }
@@ -19,6 +16,37 @@
     right: 0;
     height: 20px;
     width: 20px;
+    opacity: .7;
     transform: translate(50%, -50%);
+    transition: all .4s ease-in-out;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 2px;
+      background-color: #FFFFFF;
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__add-button {
+    margin-bottom: 13px;
+  }
+  &__popup {
+    position: absolute;
+    background: #FFFFFF;
+    padding: 17px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
   }
 }

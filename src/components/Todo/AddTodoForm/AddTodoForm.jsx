@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import NavList from '../../SideBar/Navigation-list/Navigation-list';
 import TextInput from '../../TextInput/TextInput';
@@ -6,7 +6,7 @@ import Button from '../../Button/Button';
 
 import './AddTodoForm.scss';
 
-export default ({ onAdd }) => {
+export default ({ onAdd, listId }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [fieldValue, setFieldValue] = useState("");
   const onOpenHandler = () => setShowPopup(true);
@@ -14,10 +14,15 @@ export default ({ onAdd }) => {
     setFieldValue("");
     setShowPopup(false);
   }
-  const onAddTodoHanler = () => {
-    console.log("add")
+  const onConfirmHanler = () => {
+    onAdd(listId, fieldValue);
+    setFieldValue("");
+    setShowPopup(false);
   }
   const onChangeHandler = ({ target }) => setFieldValue(target.value);
+  useEffect(() => {
+    onCloseHandler();
+  }, [listId]);
   return (
     <div className="add-todo">
       {!showPopup
@@ -65,19 +70,21 @@ export default ({ onAdd }) => {
                 value={fieldValue}
                 placeholder="Текст задачи"
                 onChange={onChangeHandler}
+                autofocus={true}
               />
             </div>
             <div className="add-todo__form__buttons">
               <div className="add-todo__form__confirm">
                 <Button
                   textButton="Добавить задачу"
-                  onClick={onAddTodoHanler}
+                  onClick={onConfirmHanler}
                 />
               </div>
               <div className="add-todo__form__reject">
                 <Button
                   textButton="Отмена"
                   onClick={onCloseHandler}
+                  roleCancel={true}
                 />
               </div>
             </div>
