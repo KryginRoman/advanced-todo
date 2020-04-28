@@ -1,6 +1,7 @@
 .todo {
   display: block;
   padding: 55px;
+  position: relative;
   &__title {
     border-bottom: 1px solid #F2F2F2;
     padding-bottom: 20px;
@@ -8,12 +9,21 @@
   }
   &__list {
     margin-bottom: 20px;
-    &__alert {
-      color: #C9D1D3;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 32px;
-      line-height: 39px;
+  }
+  &__alert {
+    color: #C9D1D3;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    height: 100%;
+    position: relative;
+    & > p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
     }
   }
 }

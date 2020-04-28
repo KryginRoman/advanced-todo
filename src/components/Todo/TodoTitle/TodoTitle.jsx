@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-import TextInput from '../../TextInput/TextInput';
-import Button from '../../Button/Button';
+import Popup from '../../Popup/Popup';
 
 import './TodoTitle.scss';
 
@@ -13,19 +12,36 @@ export default ({ title, color, onEdit, idItem }) => {
   const onEditHandler = ({ target }) => {
     setEditFieldValue(target.value);
   }
-  const onSubmitEditHandler = () => onEdit(idItem, editFieldValue);
   const onCloseHandler = () => {
     setEditMode(false);
     setEditFieldValue("");
   }
+  const onSubmitEditHandler = () => {
+    onEdit(idItem, editFieldValue)
+    onCloseHandler();
+  }
   useEffect(() => {
     setEditMode(false);
-  }, [idItem]);
+    setEditFieldValue(title)
+  }, [idItem, title]);
   return (
     <div>
       {
-        !editMode
+        editMode
         ? (
+            <div className="todo-title__edit-field">
+              <Popup
+                submitButtonText="Сохранить изменения"
+                rejectButtonText="Отмена"
+                fieldValue={editFieldValue}
+                fieldPlaceholder="Введите новый заголовок"
+                onChange={onEditHandler}
+                onSubmit={onSubmitEditHandler}
+                onReject={onCloseHandler}
+              />
+            </div>
+        )
+        : ( 
             <h1
               className="todo-title"
               data-color={color}
@@ -50,27 +66,6 @@ export default ({ title, color, onEdit, idItem }) => {
                 </svg>
               </div>
             </h1>
-        )
-        : (
-          <div className="todo-title__edit-field">
-            <TextInput
-              value={editFieldValue}
-              autofocus={true}
-              placeholder="Введите новые заголовок"
-              onChange={onEditHandler}
-            />
-            <div className="todo-title__edit-field__buttons">
-              <Button
-                textButton="Сохранить изменения"
-                onClick={onSubmitEditHandler}
-              />
-              <Button
-                textButton="Отмена"
-                onClick={onCloseHandler}
-                roleCancel={true}
-              />
-            </div>
-          </div>
         )
       }
     </div>

@@ -1,0 +1,11 @@
+.popup {
+  &__text-field {
+    margin-bottom: 15px;
+  }
+  &__buttons {
+    display: flex;
+    &__submit {
+      margin-right: 10px;
+    }
+  }
+}

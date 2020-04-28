@@ -13,15 +13,6 @@
     cursor: pointer;
     &-field {
       width: 370px;
-      & > input {
-        margin-bottom: 15px;
-      }
-      &__buttons {
-        display: flex;
-        & > button:first-child {
-          margin-right: 15px;
-        }
-      }
     }
     & > svg > path {
       fill: #DFDFDF;

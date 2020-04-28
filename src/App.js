@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import {Route ,useHistory} from 'react-router-dom';
+import {Route, useHistory} from 'react-router-dom';
 
 import SideBar from './components/SideBar/SideBar';
 import Todo from './components/Todo/Todo';
@@ -16,12 +16,11 @@ export default () => {
 
   useEffect(()=> {
     const listId = history.location.pathname.split('list/')[1];
-    setActiveListItem(listId);
-  }, [history.location.pathname]);
+    setActiveListItem(Number(listId));
+  }, [lists, history.location.pathname]);
 
   const removeListItem = id => {
     const newLists = lists.filter(list => list.id !== id);
-
     setLists(newLists);
   }
   const addListItem = (name, colorId) => {
@@ -74,7 +73,7 @@ export default () => {
     setLists(newList);
   }
 
-  const lists2 = lists.map(list => {
+  const lists2 = lists.map(list => {//This is a temporary solution, data must be received from the server in the hook useEffect
     return {
       ...list,
       tasks: tasks.filter(task => task.listId === list.id),
@@ -85,7 +84,7 @@ export default () => {
   return (
     <div className="app">
       <SideBar 
-        navList={lists}
+        navList={lists2}
         colors={db.colors}
         onRemove={removeListItem}
         onAdd={addListItem}
@@ -108,7 +107,7 @@ export default () => {
         </Route>
         <Route path="/list/:id">
           <Todo
-            list={lists2.find(list => list.id === Number(activeListItem))}
+            list={lists2.find(list => list.id === activeListItem)}
             onAdd={addTodoItem}
             onRemove={removeTodoItem}
             onComplete={toggleCompleteTodoItem}

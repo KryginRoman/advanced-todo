@@ -1,6 +1,7 @@
 .add-panel {
   position: relative;
   margin-bottom: 140px;
+  z-index: 10;
   &__field {
     margin-bottom: 13px;
   }

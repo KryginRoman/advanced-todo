@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useHistory} from 'react-router-dom';
  
-import NavList from './Navigation-list/Navigation-list';
+import NavList from '../Navigation-list/Navigation-list';
 import AddPanel from '../AddPanel/AddPanel';
 
 import './SideBar.scss';
@@ -10,8 +10,8 @@ export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
   const history = useHistory();
   return (
     <div className="sidebar">
-      <nav className="sidebar-navigation">
-        {(navList.length > 0) && (
+      {(navList.length > 0) && (
+        <nav className="sidebar-navigation">
           <div className="sidebar-navigation_main">
             <NavList
               navigationItems={[
@@ -40,22 +40,17 @@ export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
               activeListItem={activeListItem}
             />
           </div>
-        )}
-        <div className="sidebar-navigation_tasks">
-          <NavList 
-            navigationItems={navList.map(list => {
-              return {
-                ...list,
-                removable: true,
-                color: colors.find(color => color.id === list.colorId).name
-              }
-            })} 
-            onRemove={onRemove}
-            onClickItem={(id) => history.push(`/list/${id}`)}
-            activeListItem={activeListItem}
-          />
-        </div>
-      </nav>
+          <div className="sidebar-navigation_tasks">
+            <NavList
+              navigationItems={navList}
+              onRemove={onRemove}
+              removableItem={true}
+              onClickItem={(id) => history.push(`/list/${id}`)}
+              activeListItem={activeListItem}
+            />
+          </div>
+        </nav>
+      )}
       <div className="sidebar__add-panel">
         <AddPanel
           colors={colors}

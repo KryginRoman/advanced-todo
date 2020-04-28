@@ -6,38 +6,50 @@ import AddForm from './AddTodoForm/AddTodoForm';
 
 import './Todo.scss';
 
-export default ({ list, onAdd, onRemove, onComplete, onEdit }) => {
+export default ({ list = {}, onAdd, onRemove, onComplete, onEdit }) => {
+  const {name, colorName, id, tasks} = list;
   return (
-    <>
+    <div className="todo">
       {
-        list && (
-          <div className="todo">   
-            <div className="todo__title">
-              <TodoTitle
-                title={list.name}
-                color={list.colorName}
-                idItem={list.id}
-                onEdit={onEdit}
-              />
-            </div>
-            <div className="todo__list">
-              {(list.tasks && list.tasks.length > 0)
-                ? <TodoList 
-                    todos={list.tasks}
-                    onRemove={onRemove}
-                    onComplete={onComplete}
-                  /> 
-                : <p className="todo__list__alert">Задачи отсутствуют</p>}
-            </div>
-            <div className="todo__form">
-              <AddForm
-                onAdd={onAdd}
-                listId={list.id}
-              />
-            </div>
+        tasks 
+        ? (
+            <>
+              <div className="todo__title">
+                <TodoTitle
+                  title={name}
+                  color={colorName}
+                  idItem={id}
+                  onEdit={onEdit}
+                />
+              </div>
+              <div className="todo__list">
+                {(tasks.length > 0)
+                  ? (
+                    <TodoList
+                      todos={tasks}
+                      onRemove={onRemove}
+                      onComplete={onComplete}
+                    />
+                  )
+                  : (
+                    null
+                  )
+                }
+              </div>
+              <div className="todo__form">
+                <AddForm
+                  onAdd={onAdd}
+                  listId={id}
+                />
+              </div>
+            </>
+        )
+        : (
+          <div className="todo__alert">
+            <p>"Задачи отсутствуют"</p>
           </div>
         )
       }
-    </>
+    </div>
   )
 }

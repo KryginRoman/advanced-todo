@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Button.scss';
 
-export default ({ textButton, onClick, roleCancel }) => {
+export default ({ textButton,  type, onClick, roleCancel }) => {
   const classList = ["button"];
 
   if (roleCancel) classList.push("button_grey");
@@ -10,7 +10,7 @@ export default ({ textButton, onClick, roleCancel }) => {
   return (
     <button
       className={classList.join(" ")}
-      type="button"
+      type={type}
       onClick={onClick}
     >
       {textButton}
