@@ -9,7 +9,7 @@ export default ({ title, color, onEdit, idItem }) => {
   const [editMode, setEditMode] = useState(false);
   const [editFieldValue, setEditFieldValue] = useState(title);
   const openEditField = () => setEditMode(true);
-  const onEditHandler = ({ target }) => {
+  const onChangeHandler = ({ target }) => {
     setEditFieldValue(target.value);
   }
   const onCloseHandler = () => {
@@ -35,7 +35,7 @@ export default ({ title, color, onEdit, idItem }) => {
                 rejectButtonText="Отмена"
                 fieldValue={editFieldValue}
                 fieldPlaceholder="Введите новый заголовок"
-                onChange={onEditHandler}
+                onChange={onChangeHandler}
                 onSubmit={onSubmitEditHandler}
                 onReject={onCloseHandler}
               />

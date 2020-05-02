@@ -6,27 +6,27 @@ import AddForm from './AddTodoForm/AddTodoForm';
 
 import './Todo.scss';
 
-export default ({ list = {}, onAdd, onRemove, onComplete, onEdit }) => {
-  const {name, colorName, id, tasks} = list;
+export default ({ list, onAdd, onRemove, onComplete, onEdit }) => {
   return (
     <div className="todo">
       {
-        tasks 
+        list 
         ? (
             <>
               <div className="todo__title">
                 <TodoTitle
-                  title={name}
-                  color={colorName}
-                  idItem={id}
+                  title={list.name}
+                  color={list.color.name}
+                  idItem={list.id}
                   onEdit={onEdit}
                 />
               </div>
               <div className="todo__list">
-                {(tasks.length > 0)
+                {(list.tasks.length > 0)
                   ? (
                     <TodoList
-                      todos={tasks}
+                      todos={list.tasks}
+                      listId={list.id}
                       onRemove={onRemove}
                       onComplete={onComplete}
                     />
@@ -39,7 +39,7 @@ export default ({ list = {}, onAdd, onRemove, onComplete, onEdit }) => {
               <div className="todo__form">
                 <AddForm
                   onAdd={onAdd}
-                  listId={id}
+                  listId={list.id}
                 />
               </div>
             </>

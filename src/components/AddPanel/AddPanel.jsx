@@ -2,26 +2,13 @@ import React, {useState} from 'react';
 
 import './AddPanel.scss';
 
-import Button from '../Button/Button';
-import TextInput from '../TextInput/TextInput';
-import ColorList from './ColorList/ColorList';
+import AddPanelForm from './AddPanelForm/AddPanelForm';
 import NavList from '../Navigation-list/Navigation-list';
 
-export default ({ colors, onClick }) => {
+export default ({ colors, onSubmit }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [activeColorId, setActiveColorId] = useState(colors[0].id);
   const togglePopup = () => setShowPopup(!showPopup);
-  const onChangeInputHandler = e => setInputValue(e.target.value);
-  const onCloseHandler = () => {
-    setInputValue("");
-    setActiveColorId(colors[0].id);
-    setShowPopup(false);
-  }
-  const onAddHandler = () => {
-    onClick(inputValue, activeColorId);
-    onCloseHandler();
-  }
+  const onCloseHandler = () => setShowPopup(false);
   return (
     <div className="add-panel">
       <div
@@ -32,7 +19,6 @@ export default ({ colors, onClick }) => {
           navigationItems={[
             {
               name: "Добавить папку",
-              removable: false,
               active: showPopup,
               icon: (
                 <svg
@@ -57,40 +43,17 @@ export default ({ colors, onClick }) => {
                     strokeLinejoin="round"
                   />
                 </svg>
-              ),
-              id: Math.random()
+              )
             }
           ]}
         />
       </div>
       {showPopup && (
-        <div className="add-panel__popup">
-          <div className="add-panel__field">
-            <TextInput
-              value={inputValue}
-              placeholder="Название папки"
-              onChange={onChangeInputHandler}
-              autofocus={true}
-            />
-          </div>
-          <div className="add-panel__colors">
-            <ColorList
-              colorList={colors}
-              activeColorId={activeColorId}
-              onClick={setActiveColorId}
-            />
-          </div>
-          <div className="add-panel__button">
-            <Button
-              textButton="Добавить"
-              onClick={onAddHandler}
-            />
-          </div>
-          <div
-            className="add-panel__close"
-            onClick={onCloseHandler}
-          />
-        </div>
+        <AddPanelForm
+          colors={colors}
+          onSubmit={onSubmit}
+          onClose={onCloseHandler}
+        />
       )}
     </div>
   )

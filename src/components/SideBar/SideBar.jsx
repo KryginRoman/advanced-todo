@@ -6,18 +6,17 @@ import AddPanel from '../AddPanel/AddPanel';
 
 import './SideBar.scss';
 
-export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
+export default ({ lists, colors, activeListItem, onRemoveList, onAddList }) => {
   const history = useHistory();
   return (
     <div className="sidebar">
-      {(navList.length > 0) && (
+      {(lists.length > 0) && (
         <nav className="sidebar-navigation">
           <div className="sidebar-navigation_main">
             <NavList
               navigationItems={[
                 {
                   name: "Все задачи",
-                  removable: false,
                   active: history.location.pathname === '/',
                   icon: (
                     <svg
@@ -32,8 +31,7 @@ export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
                         fill="#7C7C7C"
                       />
                     </svg>
-                  ),
-                  id: 10000
+                  )
                 }
               ]}
               onClickItem={() => history.push('/')}
@@ -42,8 +40,8 @@ export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
           </div>
           <div className="sidebar-navigation_tasks">
             <NavList
-              navigationItems={navList}
-              onRemove={onRemove}
+              navigationItems={lists}
+              onRemove={onRemoveList}
               removableItem={true}
               onClickItem={(id) => history.push(`/list/${id}`)}
               activeListItem={activeListItem}
@@ -52,10 +50,12 @@ export default ({ navList, colors, activeListItem, onRemove, onAdd }) => {
         </nav>
       )}
       <div className="sidebar__add-panel">
-        <AddPanel
-          colors={colors}
-          onClick={onAdd}
-        />
+        {(colors.length > 0) && (
+          <AddPanel
+            colors={colors}
+            onSubmit={onAddList}
+          />
+        )}
       </div>
     </div>
   )

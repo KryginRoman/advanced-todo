@@ -1,3 +1,10 @@
-Stack:
-    ReactJS (useState, useHistory,useEffect)
-    React Router
+**Stack**:
+
+    * ReactJS (useState, useReducer, useContext, useHistory, useEffect)
+
+    * React Router
+
+    * Axios
+
+    * SASS
+    

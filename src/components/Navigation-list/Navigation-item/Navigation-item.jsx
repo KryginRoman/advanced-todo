@@ -13,6 +13,11 @@ export default ({
 }) => {
   const classList = ["navigation-item"];
 
+  const onRemoveHandler = e => {
+    e.stopPropagation();
+    onRemove();
+  }
+
   if (active) classList.push("navigation-item_active");
 
   return (
@@ -32,7 +37,7 @@ export default ({
       ? (
           <div 
             className="navigation-item__remove" 
-            onClick={onRemove}
+            onClick={onRemoveHandler}
           >
             <svg
               width="11"

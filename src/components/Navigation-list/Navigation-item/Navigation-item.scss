@@ -56,10 +56,11 @@
   }
   &__text {
     display: inline-block;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 160px;
-      white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
   }
   &__remove {
     position: absolute;
