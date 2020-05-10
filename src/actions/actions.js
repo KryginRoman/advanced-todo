@@ -59,10 +59,10 @@ const toggleCompleteTodoItem = (id, listId) => {
   }
 }
 
-const setActiveList = id => {
+const setActiveList = item => {
   return {
     type: "SET_ACTIVE_LIST",
-    id
+    item
   }
 }
 

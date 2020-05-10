@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const rootPath = 'http://localhost:3001'; //This path depends on which port the json server is running on.
+const rootPath = process.env.REACT_APP_PATH;
 
 const getLists = () => {
   return axios.get(`${rootPath}/lists?_expand=color&_embed=tasks`)

@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "concurrently": "^5.2.0",
     "node-sass": "^4.13.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -19,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fake-json": "json-server ./src/assets/db.json --watch --port 3001"
+    "fake-json": "json-server ./src/db/db.json --watch --port 3001",
+    "dev": "concurrently \"npm run start\" \"npm run fake-json\""
   },
   "eslintConfig": {
     "extends": "react-app"

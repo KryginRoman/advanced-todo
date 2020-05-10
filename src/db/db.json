@@ -36,12 +36,12 @@
       "id": 1,
       "listId": 2,
       "text": "Изучить JavaScript",
-      "completed": true
+      "completed": false
     },
     {
       "listId": 4,
       "text": "Куча",
-      "completed": false,
+      "completed": true,
       "id": 10
     },
     {

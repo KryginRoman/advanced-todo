@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import Popup from '../../Popup/Popup';
 
@@ -8,6 +8,7 @@ import './TodoTitle.scss';
 export default ({ title, color, onEdit, idItem }) => {
   const [editMode, setEditMode] = useState(false);
   const [editFieldValue, setEditFieldValue] = useState(title);
+
   const openEditField = () => setEditMode(true);
   const onChangeHandler = ({ target }) => {
     setEditFieldValue(target.value);
@@ -20,10 +21,12 @@ export default ({ title, color, onEdit, idItem }) => {
     onEdit(idItem, editFieldValue)
     onCloseHandler();
   }
+
   useEffect(() => {
     setEditMode(false);
     setEditFieldValue(title)
   }, [idItem, title]);
+
   return (
     <div>
       {

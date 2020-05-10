@@ -1,12 +1,12 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 
 import Todo from './Todo';
 
 import API from '../../api/api';
 import Context from '../../context/context';
 import {
-  addTodoItem, 
-  removeTodoItem, 
+  addTodoItem,
+  removeTodoItem,
   editListTitle,
   toggleCompleteTodoItem
 } from '../../actions/actions';

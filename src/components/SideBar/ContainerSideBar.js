@@ -4,11 +4,10 @@ import SideBar from './SideBar';
 
 import API from '../../api/api';
 import Context from '../../context/context';
-import {setLists} from '../../actions/actions';
+import { setLists } from '../../actions/actions';
 
 export default () => {
-  const {state, dispatch} = useContext(Context);
-  const {lists, colors, activeListItem} = state;
+  const { lists, colors, activeListItem, dispatch } = useContext(Context);
 
   const onAddHandler = (name, colorId) => {
     API.addListsItem(name, colorId)

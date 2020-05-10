@@ -10,8 +10,8 @@ export default ({ list, onAdd, onRemove, onComplete, onEdit }) => {
   return (
     <div className="todo">
       {
-        list 
-        ? (
+        list
+          ? (
             <>
               <div className="todo__title">
                 <TodoTitle
@@ -43,12 +43,12 @@ export default ({ list, onAdd, onRemove, onComplete, onEdit }) => {
                 />
               </div>
             </>
-        )
-        : (
-          <div className="todo__alert">
-            <p>"Задачи отсутствуют"</p>
-          </div>
-        )
+          )
+          : (
+            <div className="todo__alert">
+              <p>"Задачи отсутствуют"</p>
+            </div>
+          )
       }
     </div>
   )

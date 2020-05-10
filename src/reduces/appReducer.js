@@ -60,7 +60,7 @@ const appReducer = (state, action) => {
     case "SET_ACTIVE_LIST":
       return {
         ...state,
-        activeListItem: action.id
+        activeListItem: action.item
       }
     case "TOGGLE_COMPLETE_TODO":
       const newList = state.lists.map(list => {
